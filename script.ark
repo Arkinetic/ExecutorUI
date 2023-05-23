@@ -117,6 +117,7 @@ if enabled then
 	blur.Enabled = false
 	if CoreUI.Visible == true then
 		CoreUI.Visible = false
+        inputscript:ReleaseFocus()
 		game.Lighting.Blur.Enabled = false
 	else
 	if CoreUI.Visible == false then
