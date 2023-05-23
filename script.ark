@@ -1,0 +1,129 @@
+local InternalUI = Instance.new("ScreenGui")
+local Executor = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local execute = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local inputscript = Instance.new("TextBox")
+local UICorner_3 = Instance.new("UICorner")
+local clear = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+InternalUI.Name = "InternalUI"
+InternalUI.Parent = game.CoreGui
+InternalUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Executor.Name = "Executor"
+Executor.Parent = InternalUI
+Executor.Active = true
+Executor.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
+Executor.BorderSizePixel = 0
+Executor.Position = UDim2.new(0.0932871848, 0, 0.401234567, 0)
+Executor.Size = UDim2.new(0, 529, 0, 287)
+Executor.Visible = false
+UICorner.Parent = Executor
+execute.Name = "execute"
+execute.Parent = Executor
+execute.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+execute.BorderSizePixel = 0
+execute.Position = UDim2.new(0.028355388, 0, 0.790940762, 0)
+execute.Size = UDim2.new(0, 200, 0, 50)
+execute.Font = Enum.Font.SourceSans
+execute.Text = "Execute"
+execute.TextColor3 = Color3.fromRGB(255, 255, 255)
+execute.TextSize = 33.000
+execute.TextWrapped = true
+UICorner_2.CornerRadius = UDim.new(0, 9)
+UICorner_2.Parent = execute
+inputscript.Name = "inputscript"
+inputscript.Parent = Executor
+inputscript.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+inputscript.Position = UDim2.new(0.0283553898, 0, 0.0557491332, 0)
+inputscript.Size = UDim2.new(0, 506, 0, 204)
+inputscript.SizeConstraint = Enum.SizeConstraint.RelativeXX
+inputscript.ClearTextOnFocus = false
+inputscript.Font = Enum.Font.SourceSans
+inputscript.MultiLine = true
+inputscript.PlaceholderText = "Client sided scripts only"
+inputscript.Text = ""
+inputscript.TextColor3 = Color3.fromRGB(79, 79, 79)
+inputscript.TextSize = 12.000
+inputscript.TextWrapped = true
+inputscript.TextXAlignment = Enum.TextXAlignment.Left
+inputscript.TextYAlignment = Enum.TextYAlignment.Top
+UICorner_3.Parent = inputscript
+clear.Name = "clear"
+clear.Parent = Executor
+clear.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+clear.BorderSizePixel = 0
+clear.Position = UDim2.new(0.580340266, 0, 0.790940762, 0)
+clear.Size = UDim2.new(0, 200, 0, 50)
+clear.Font = Enum.Font.SourceSans
+clear.Text = "Clear"
+clear.TextColor3 = Color3.fromRGB(255, 255, 255)
+clear.TextSize = 33.000
+UICorner_4.Parent = clear
+local function QWVY_fake_script() -- execute.executescript 
+	local script = Instance.new('LocalScript', execute)
+
+	script.Parent.Parent.execute.MouseButton1Down:Connect(function()
+		local input = script.Parent.Parent.inputscript
+		loadstring(input.Text)()
+	end)
+end
+coroutine.wrap(QWVY_fake_script)()
+local function GKUQMH_fake_script() -- execute.highlight 
+	local script = Instance.new('LocalScript', execute)
+
+	local btn = script.Parent.Parent.execute
+	btn.MouseEnter:Connect(function()
+		btn.BackgroundColor3 = Color3.fromRGB(255,0,0)
+	end)
+	btn.MouseLeave:Connect(function()
+	 btn.BackgroundColor3 = Color3.fromRGB(56,56,56)
+	end)
+end
+coroutine.wrap(GKUQMH_fake_script)()
+local function HLFHAAP_fake_script() -- Executor.drag 
+	local script = Instance.new('LocalScript', Executor)
+
+	local frame = script.Parent.Parent.Executor
+	frame.Draggable = true
+end
+coroutine.wrap(HLFHAAP_fake_script)()
+local function ZFZKVRG_fake_script() -- clear.clearscript 
+	local script = Instance.new('LocalScript', clear)
+
+	script.Parent.Parent.clear.MouseButton1Down:Connect(function()
+		local input = script.Parent.Parent.inputscript
+		input.Text = ""
+	end)
+end
+coroutine.wrap(ZFZKVRG_fake_script)()
+local function TZWCO_fake_script() -- clear.highlight 
+	local script = Instance.new('LocalScript', clear)
+	local btn = script.Parent.Parent.clear
+	btn.MouseEnter:Connect(function()
+		btn.BackgroundColor3 = Color3.fromRGB(255,0,0)
+	end)
+	btn.MouseLeave:Connect(function()
+	 btn.BackgroundColor3 = Color3.fromRGB(56,56,56)
+	end)
+end
+coroutine.wrap(TZWCO_fake_script)()
+if enabled then
+    local UIS = game:GetService("UserInputService")
+    UIS.InputBegan:Connect(function(k)
+    if k.KeyCode == Enum.KeyCode.H then
+	local CoreUI = Executor
+    local blur = Instance.new("BlurEffect", game.Lighting)
+	blur.Enabled = false
+	if CoreUI.Visible == true then
+		CoreUI.Visible = false
+		game.Lighting.Blur.Enabled = false
+	else
+	if CoreUI.Visible == false then
+	   CoreUI.Visible = true
+	   game.Lighting.Blur.Enabled = true
+	    end
+    end
+  end
+end)
+end
